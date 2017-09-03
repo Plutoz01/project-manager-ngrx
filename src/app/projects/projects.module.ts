@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { Components } from './components';
 import { Services } from './services';
@@ -12,7 +11,6 @@ import { InitialProjects } from './data/initial/projects.data';
 	imports: [
 		CommonModule,
 		NgbModule,
-		AngularFontAwesomeModule,
 		ProjectsRouting
 	],
 	declarations: [

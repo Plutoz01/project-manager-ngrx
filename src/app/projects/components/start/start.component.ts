@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap/typeahead/typeahead.module';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
