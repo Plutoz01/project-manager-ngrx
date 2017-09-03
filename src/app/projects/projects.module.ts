@@ -4,7 +4,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 import { Components } from './components';
+import { Services } from './services';
 import { ProjectsRouting } from './projects.routing';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+import { InitialProjects } from './data/initial/projects.data';
+import { ProjectRepositoryService } from './services/project-repository.service';
+import { Project } from './models/project.interface';
 
 @NgModule( {
 	imports: [
@@ -14,7 +19,11 @@ import { ProjectsRouting } from './projects.routing';
 		ProjectsRouting
 	],
 	declarations: [
-		...Components
+		...Components,
+	],
+	providers: [
+		{ provide: 'INITIAL_PROJECTS', useValue: InitialProjects },
+		...Services
 	],
 	exports: [
 		...Components
