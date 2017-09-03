@@ -5,15 +5,15 @@
 			<div ngbDropdown>
 				<button class="btn input-group-addon bg-light" ngbDropdownToggle>everywhere</button>
 				<div ngbDropdownMenu>
-					<button class="dropdown-item" disabled>everywhere</button>						
+					<button class="dropdown-item" disabled>everywhere</button>
 					<button class="dropdown-item">in projects</button>
 					<button class="dropdown-item">in user stories</button>
 					<button class="dropdown-item">in tasks</button>
 				</div>
 			</div>
 
-			<input class="form-control" type="text" placeholder="Type here to search..."
-				[ngbTypeahead]="onSearch" [resultTemplate]="searchResultLine" (selectItem)="onSearchResultSelect( $event )">
+			<input class="form-control" type="text" placeholder="Type here to search..." [ngbTypeahead]="onSearch" [resultTemplate]="searchResultLine"
+			 (selectItem)="onSearchResultSelect( $event )">
 		</div>
 	</div>
 </div>
@@ -26,42 +26,51 @@
 </ng-template>
 
 <div class="card mb-3">
-		<div class="card-body">
-			<h4 class="card-title">Favorite projects</h4>
-	
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item list-group-item-action">
-					<div class="d-flex justify-content-between">
-						<div class="d-flex">
-							<h5 class="mr-2">Best project on the world</h5>
-							<fa name="star"></fa>
-						</div>
-						<div class="text-secondary">
-							<small>progress: 98%</small>
-							<small>|</small>
-							<small>deadline: none</small>
-						</div>
+	<div class="card-body">
+		<h4 class="card-title">Favorite projects</h4>
+
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item list-group-item-action" (click)="onProjectSelect( 1 )">
+				<div class="d-flex justify-content-between">
+					<h5 class="mr-2">Best project on the world</h5>
+					<div class="text-secondary">
+						<small>progress: 98%</small>
+						<small>|</small>
+						<small>deadline: none</small>
 					</div>
-					<p class="text-muted">Description is futile, it is just awesome</p>
-					<div>
-						<span class="badge badge-pill badge-success">awesome</span>
-					</div>
-				</li>
-			</ul>
-		</div>
+				</div>
+				<p class="text-muted">Description is futile, it is just awesome</p>
+				<div>
+					<span class="badge badge-pill badge-success">awesome</span>
+				</div>
+			</li>
+		</ul>
 	</div>
+</div>
 
 <div class="card">
 	<div class="card-body">
 		<h4 class="card-title">Recently viewed projects</h4>
 
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item list-group-item-action">
+			<li *ngFor="let project of recentProjects$ | async" class="list-group-item list-group-item-action" (click)="onProjectSelect( project.id )">
 				<div class="d-flex justify-content-between">
-					<div class="d-flex">
-						<h5 class=" mr-2">Some cool project</h5>
-						<fa name="star-o"></fa>
+					<h5 class=" mr-2">{{ project.name }}</h5>
+					<div class="text-secondary">
+						<small>TODO:progress: 75%</small>
+						<small>|</small>
+						<small>TODO:deadline: none</small>
 					</div>
+				</div>
+				<p class="text-muted">{{ project.description }}</p>
+				<div>
+					TODO: tags
+				</div>
+			</li>
+
+			<li class="list-group-item list-group-item-action" (click)="onProjectSelect( 2 )">
+				<div class="d-flex justify-content-between">
+					<h5 class=" mr-2">Some cool project</h5>
 					<div class="text-secondary">
 						<small>progress: 75%</small>
 						<small>|</small>
@@ -76,12 +85,9 @@
 				</div>
 			</li>
 
-			<li class="list-group-item list-group-item-action">
+			<li class="list-group-item list-group-item-action" (click)="onProjectSelect( 3 )">
 				<div class="d-flex justify-content-between">
-					<div class="d-flex">
-						<h5 class=" mr-2">Some other cool project</h5>
-						<fa name="star-o"></fa>
-					</div>
+					<h5 class=" mr-2">Some other cool project</h5>
 					<div class="text-secondary">
 						<small>progress: 49%</small>
 						<small>|</small>
@@ -91,12 +97,9 @@
 				<p class="text-muted">Short description of project with quite much content probably wrapping into multiple lines</p>
 			</li>
 
-			<li class="list-group-item list-group-item-action">
+			<li class="list-group-item list-group-item-action" (click)="onProjectSelect( 4 )">
 				<div class="d-flex justify-content-between">
-					<div class="d-flex">
-						<h5 class=" mr-2">Another but still cool project</h5>
-						<fa name="star-o"></fa>
-					</div>
+					<h5 class=" mr-2">Another but still cool project</h5>
 					<div class="text-secondary">
 						<small>progress: 88%</small>
 						<small>|</small>

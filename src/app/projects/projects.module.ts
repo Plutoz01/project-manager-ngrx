@@ -6,10 +6,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 import { Components } from './components';
 import { Services } from './services';
 import { ProjectsRouting } from './projects.routing';
-import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { InitialProjects } from './data/initial/projects.data';
-import { ProjectRepositoryService } from './services/project-repository.service';
-import { Project } from './models/project.interface';
 
 @NgModule( {
 	imports: [
