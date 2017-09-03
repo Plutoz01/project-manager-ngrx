@@ -6,10 +6,12 @@ import { Components } from './components';
 import { Services } from './services';
 import { ProjectsRouting } from './projects.routing';
 import { InitialProjects } from './data/initial/projects.data';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule( {
 	imports: [
 		CommonModule,
+		ReactiveFormsModule,
 		NgbModule,
 		ProjectsRouting
 	],
