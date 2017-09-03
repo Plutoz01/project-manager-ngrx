@@ -1,0 +1,22 @@
+<div class="card mt-3">
+	<div class="card-header d-flex justify-content-between">
+		<h4>{{ id ? 'Edit project' : 'Start new project' }}</h4>
+		<p class="text-secondary">id: {{ id }}</p>
+	</div>
+	<div class="card-body">
+		<form [formGroup]="projectForm">
+			<div class="form-group">
+				<label for="projectName">Name:</label>
+				<input type="text" name="projectName" id="projectName" class="form-control"
+					   formControlName="name" placeholder="project name" aria-describedby="helpId">
+			</div>
+
+			<div class="form-group">
+				<label for="projectDescription">Description:</label>
+				<textarea class="form-control" name="projectDescription" id="projectDescription"
+						  formControlName="description" rows="4" placeholder="project description">
+				</textarea>
+			</div>
+		</form>
+	</div>
+</div>
