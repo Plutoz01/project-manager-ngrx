@@ -1,7 +1,8 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 
-import { Project } from '../models/project.interface';
+import { Project } from '../models/project.class';
 import { AbstractInMemoryCrudRepository } from '../../shared/services/AbstractInMemoryCrudRepository.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProjectRepositoryService extends AbstractInMemoryCrudRepository<Project, number> {
@@ -14,5 +15,9 @@ export class ProjectRepositoryService extends AbstractInMemoryCrudRepository<Pro
 
 	public generateNewId(): number {
 		return ++ProjectRepositoryService.nextId;
+	}
+
+	public getFavorites(): Observable<Project[]> {
+		return this.getAll().map( ( projects: Project[] ) => projects.filter( ( project: Project ) => project.isFavorite ) );
 	}
 }

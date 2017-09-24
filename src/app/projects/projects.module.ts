@@ -7,13 +7,15 @@ import { Services } from './services';
 import { ProjectsRouting } from './projects.routing';
 import { InitialProjects } from './data/initial/projects.data';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule( {
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
 		NgbModule,
-		ProjectsRouting
+		ProjectsRouting,
+		SharedModule
 	],
 	declarations: [
 		...Components,

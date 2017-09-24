@@ -1,0 +1,16 @@
+<li class="project-list-item list-group-item list-group-item-action">
+	<div class="d-flex justify-content-between">
+		<h5 class=" mr-2">{{ project.name }}</h5>
+		<div class="text-secondary">
+			<small>progress: {{ progress }}%</small>
+			<ng-container  *ngIf="project.deadline">
+				<small>|</small>
+				<small [ngClass]="{ 'deadline-expired': project.isExpired }" >deadline: {{ project.deadline }}</small>
+			</ng-container>
+		</div>
+	</div>
+	<p class="text-muted">{{ project?.description }}</p>
+	<div *ngIf="project.tags?.length > 0" class="tag-container">
+		<span *ngFor="let tag of project?.tags" class="badge badge-pill badge-info">{{ tag }}</span>
+	</div>
+</li>

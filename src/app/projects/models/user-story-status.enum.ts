@@ -1,5 +1,5 @@
 export enum UserStoryStatus {
-	Queue,
-	InProgress,
-	Completed
+	Queue = 'QUEUE',
+	InProgress = 'IN_PROGRESS',
+	Completed = 'COMPLETED'
 }

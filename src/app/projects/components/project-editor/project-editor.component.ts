@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Out
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Project } from '../../models/project.interface';
+import { Project } from '../../models/project.class';
 
 @Component( {
 	selector: 'pm-project-editor',

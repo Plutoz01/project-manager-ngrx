@@ -1,0 +1,12 @@
+.project-list-item {
+  .deadline-expired {
+	color: #A00;
+	font-weight: bold;
+  }
+
+  .tag-container {
+	& > * {
+	  margin-right: 0.5em;
+	}
+  }
+}

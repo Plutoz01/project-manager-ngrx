@@ -4,7 +4,7 @@ import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap/typeahea
 import { Observable } from 'rxjs/Observable';
 
 
-import { Project } from '../../models/project.interface';
+import { Project } from '../../models/project.class';
 import { ProjectRepositoryService } from '../../services/project-repository.service';
 
 export interface SearchResult {
@@ -20,12 +20,14 @@ export interface SearchResult {
 export class ProjectStartComponent {
 
 	recentProjects$: Observable<Project[]>;
+	favoriteProjects$: Observable<Project[]>;
 
 	constructor(
 		private router: Router,
 		private projectRepositoryService: ProjectRepositoryService
 	) {
 		this.recentProjects$ = projectRepositoryService.getAll();
+		this.favoriteProjects$ = projectRepositoryService.getFavorites();
 	}
 
 	onSearch = (text: Observable<string>) => {
@@ -47,8 +49,8 @@ export class ProjectStartComponent {
 		console.log( 'onSearchResultSelect: ', selectedResult );
 	}
 
-	onProjectSelect( projectId: number ) {
-		this.router.navigate( [ '/projects', projectId ] );
+	onProjectSelect( project: Project ) {
+		this.router.navigate( [ '/projects', project.id ] );
 	}
 
 }

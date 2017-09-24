@@ -31,7 +31,7 @@ export abstract class AbstractInMemoryCrudRepository<T extends Identifiable<ID>,
 	}
 
 	getAll(): Observable<T[]> {
-		return Observable.of(Object.values(this.entitiesById));
+		return Observable.of(Object.values(this.entitiesById)).delay( 1000 );
 	}
 
 	create(entity: T): Observable<T> {
