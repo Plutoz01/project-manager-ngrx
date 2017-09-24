@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Project } from '../../models/project.class';
-import { InitialProjects } from '../../data/initial/projects.data';
 
 @Component( {
 	selector: 'pm-project-details',
@@ -8,5 +9,9 @@ import { InitialProjects } from '../../data/initial/projects.data';
 	styleUrls: [ './project-details.component.scss' ]
 } )
 export class ProjectDetailsComponent {
-	project: Project = InitialProjects[ 0 ];
+	readonly project: Project;
+
+	constructor( private route: ActivatedRoute ) {
+		this.project = route.snapshot.data[ 'project' ];
+	}
 }

@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Components } from './components';
 import { Services } from './services';
+import { Resolvers } from './resolvers';
 import { ProjectsRouting } from './projects.routing';
 import { InitialProjects } from './data/initial/projects.data';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
 	],
 	providers: [
 		{ provide: 'INITIAL_PROJECTS', useValue: InitialProjects },
-		...Services
+		...Services,
+		...Resolvers
 	],
 	exports: [
 		...Components
