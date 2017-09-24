@@ -1,45 +1,4 @@
 <ul class="list-group list-group-flush">
-	<pm-project-list-item *ngFor="let project of projects" [project]="project" (click)="select.emit( project )">
+	<pm-project-list-item *ngFor="let project of projects" [project]="project" [@flyIn]="'in'" (click)="select.emit( project )">
 	</pm-project-list-item>
-
-	<!--<li class="list-group-item list-group-item-action">-->
-		<!--<div class="d-flex justify-content-between">-->
-			<!--<h5 class=" mr-2">Some cool project</h5>-->
-			<!--<div class="text-secondary">-->
-				<!--<small>progress: 75%</small>-->
-				<!--<small>|</small>-->
-				<!--<small>deadline: none</small>-->
-			<!--</div>-->
-		<!--</div>-->
-		<!--<p class="text-muted">Short description of project</p>-->
-		<!--<div>-->
-			<!--<span class="badge badge-pill badge-info">Angular2</span>-->
-			<!--<span class="badge badge-pill badge-info">Typescript</span>-->
-			<!--<span class="badge badge-pill badge-danger">Important</span>-->
-		<!--</div>-->
-	<!--</li>-->
-
-	<!--<li class="list-group-item list-group-item-action">-->
-		<!--<div class="d-flex justify-content-between">-->
-			<!--<h5 class=" mr-2">Some other cool project</h5>-->
-			<!--<div class="text-secondary">-->
-				<!--<small>progress: 49%</small>-->
-				<!--<small>|</small>-->
-				<!--<small>deadline: 2018-04-15</small>-->
-			<!--</div>-->
-		<!--</div>-->
-		<!--<p class="text-muted">Short description of project with quite much content probably wrapping into multiple lines</p>-->
-	<!--</li>-->
-
-	<!--<li class="list-group-item list-group-item-action">-->
-		<!--<div class="d-flex justify-content-between">-->
-			<!--<h5 class=" mr-2">Another but still cool project</h5>-->
-			<!--<div class="text-secondary">-->
-				<!--<small>progress: 88%</small>-->
-				<!--<small>|</small>-->
-				<!--<small class="text-danger">deadline: 2017-07-25</small>-->
-			<!--</div>-->
-		<!--</div>-->
-		<!--<p class="text-muted">Short description of project</p>-->
-	<!--</li>-->
 </ul>
