@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { Project } from '../../../models/project.class';
+import { Project } from '../../models/project.class';
 
 @Component( {
 	selector: 'pm-project-list-item',

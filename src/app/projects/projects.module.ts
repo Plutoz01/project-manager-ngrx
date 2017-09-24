@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from '../shared/shared.module';
 
 import { Components } from './components';
-import { Services } from './services';
-import { Resolvers } from './resolvers';
-import { ProjectsRouting } from './projects.routing';
 import { InitialProjects } from './data/initial/projects.data';
-import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { InitialUserStories } from './data/initial/user-stories.data';
+import { ProjectsRouting } from './projects.routing';
+import { Resolvers } from './resolvers';
+import { Services } from './services';
 
 @NgModule( {
 	imports: [
@@ -23,11 +24,14 @@ import { SharedModule } from '../shared/shared.module';
 	],
 	providers: [
 		{ provide: 'INITIAL_PROJECTS', useValue: InitialProjects },
+		{ provide: 'INITIAL_USER_STORIES', useValue: InitialUserStories },
+
 		...Services,
 		...Resolvers
 	],
 	exports: [
 		...Components
 	]
-})
-export class ProjectsModule { }
+} )
+export class ProjectsModule {
+}

@@ -1,4 +1,4 @@
-<div class="card text-white bg-primary mb-3 mt-3">
+<div class="pm-card text-white bg-primary">
 	<h4 class="card-header">Search</h4>
 	<div class=card-body>
 		<div class="input-group">
@@ -26,31 +26,38 @@
 	</div>
 </ng-template>
 
-<div class="card mb-3">
+<div class="pm-card">
 	<div class="card-body">
 		<h4 class="card-title">Favorite projects</h4>
 		<ng-container *ngIf="favoriteProjects$ | async as favoriteProjects; else loadingTpl">
-			<pm-project-list
-					[projects]="favoriteProjects"
-					(select)="onProjectSelect( $event )">
-			</pm-project-list>
+			<pm-generic-list
+				[items]="favoriteProjects"
+				[itemTemplate]="projectItemTpl"
+				(itemClick)="onProjectSelect( $event )">
+			</pm-generic-list>
 		</ng-container>
 
 	</div>
 </div>
 
 
-<div class="card">
+<div class="pm-card">
 	<div class="card-body">
 		<h4 class="card-title">Recently viewed projects</h4>
 		<ng-container *ngIf="recentProjects$ | async as recentProjects; else loadingTpl">
-			<pm-project-list
-					[projects]="recentProjects"
-					(select)="onProjectSelect( $event )">
-			</pm-project-list>
+			<pm-generic-list
+				[items]="recentProjects"
+				[itemTemplate]="projectItemTpl"
+				(itemClick)="onProjectSelect( $event )">
+			</pm-generic-list>
 		</ng-container>
 	</div>
 </div>
+
+<ng-template #projectItemTpl let-item>
+	<pm-project-list-item [project]="item" >
+	</pm-project-list-item>
+</ng-template>
 
 
 <ng-template #loadingTpl>

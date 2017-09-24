@@ -1,0 +1,19 @@
+<div>
+	<ul #listItemContainer class="list-group list-group-flush" [class.scrollable]="scrollHeight" [ngStyle]="{ 'max-height': scrollHeight }">
+
+		<li *ngFor="let item of items" (click)="onClick( item )" [ngClass]="{ selected: isSelected( item )}" [@flyIn]="'in'">
+			<ng-template
+					*ngTemplateOutlet="customItemTemplate || defaultTpl; context: { $implicit: item, isSelected: isSelected( item ) }">
+			</ng-template>
+		</li>
+
+		<ng-content select=".after-last-item"></ng-content>
+	</ul>
+
+	<div class="empty-placeholder" *ngIf="items?.length === 0">
+		<i class="fa fa-info-circle" aria-hidden="true"></i>
+		{{ emptyPlaceholder }}
+	</div>
+</div>
+
+<ng-template #defaultTpl let-item>{{ item }}</ng-template>

@@ -3,13 +3,14 @@ import { UserStoryStatus } from './user-story-status.enum';
 
 export class UserStory implements Identifiable<number> {
 	id: number;
+	projectId: number;
 	name = '';
 	description = '';
 	points = 0;
 	status: UserStoryStatus = UserStoryStatus.Queue;
 
 	constructor( source?: UserStory ) {
-		if( source ) {
+		if ( source ) {
 			Object.assign( this, source );
 		}
 	}

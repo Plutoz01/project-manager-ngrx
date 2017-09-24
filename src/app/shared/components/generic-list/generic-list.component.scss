@@ -1,0 +1,29 @@
+@import '../../../../../node_modules/bootstrap/scss/bootstrap';
+
+.empty-placeholder {
+  @extend .mb-2;
+  @extend .mt-2;
+  @extend .justify-content-center;
+  @extend .align-items-center;
+  display: flex;
+  width: 100%;
+
+  i {
+	@extend .mr-2;
+  }
+}
+
+ul.list-group {
+  overflow: hidden;
+
+  &.scrollable {
+	overflow: hidden;
+	overflow-y: auto;
+  }
+
+  li {
+	list-style: none;
+  }
+
+}
+
