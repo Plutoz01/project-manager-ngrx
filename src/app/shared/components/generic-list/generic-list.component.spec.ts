@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './generic-list.component';
+import { GenericListComponent } from './generic-list.component';
 
 describe( 'ExampleListComponent', () => {
-	let component: ListComponent<string>;
-	let fixture: ComponentFixture<ListComponent<string>>;
+	let component: GenericListComponent<string>;
+	let fixture: ComponentFixture<GenericListComponent<string>>;
 
 	beforeEach( async( () => {
 		TestBed.configureTestingModule( {
-			declarations: [ ListComponent ]
+			declarations: [ GenericListComponent ]
 		} )
 			.compileComponents();
 	} ) );
 
 	beforeEach( () => {
-		fixture = TestBed.createComponent( ListComponent );
+		fixture = TestBed.createComponent( GenericListComponent );
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	} );
