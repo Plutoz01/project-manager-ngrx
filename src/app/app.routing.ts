@@ -1,4 +1,3 @@
-import { ProjectStartComponent } from './projects/components/start/start.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
