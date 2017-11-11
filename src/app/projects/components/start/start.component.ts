@@ -1,11 +1,14 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap/typeahead/typeahead.module';
 import { Observable } from 'rxjs/Observable';
-
+import { Store } from '@ngrx/store';
 
 import { Project } from '../../models/project.class';
 import { ProjectRepositoryService } from '../../services/project-repository.service';
+import { ApplicationState } from '../../../store/application-state';
+import { ProjectsLoadedAction } from '../../../store/actions';
+import { getFavoriteProjectsSelector, getProjectsSelector } from '../../../store/reducers/reducers';
 
 export interface SearchResult {
 	id: number;
@@ -17,17 +20,28 @@ export interface SearchResult {
 	templateUrl: './start.component.html',
 	styleUrls: ['./start.component.scss']
 })
-export class ProjectStartComponent {
+export class ProjectStartComponent implements OnInit {
 
 	recentProjects$: Observable<Project[]>;
 	favoriteProjects$: Observable<Project[]>;
 
 	constructor(
 		private router: Router,
-		private projectRepositoryService: ProjectRepositoryService
+		private projectRepositoryService: ProjectRepositoryService,
+		private store: Store<ApplicationState>
 	) {
-		this.recentProjects$ = projectRepositoryService.getAll();
-		this.favoriteProjects$ = projectRepositoryService.getFavorites();
+		this.recentProjects$ = this.store.select( getProjectsSelector )
+			.filter( Boolean );
+		this.favoriteProjects$ = this.store.select( getFavoriteProjectsSelector )
+			.filter( Boolean );
+	}
+
+	ngOnInit() {
+		this.projectRepositoryService.getAll().first().subscribe(
+			( projects: Project[] ) => {
+				this.store.dispatch( new ProjectsLoadedAction( projects ) );
+			}
+		);
 	}
 
 	onSearch = (text: Observable<string>) => {
