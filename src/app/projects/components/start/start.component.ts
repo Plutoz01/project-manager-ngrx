@@ -5,10 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { Project } from '../../models/project.class';
-import { ProjectRepositoryService } from '../../services/project-repository.service';
-import { ApplicationState } from '../../../store/application-state';
-import { ProjectsLoadedAction } from '../../../store/actions';
-import { getFavoriteProjectsSelector, getProjectsSelector } from '../../../store/reducers/reducers';
+import { getFavoriteProjectsSelector, getProjectsSelector } from '../../reducers/index';
+import { ProjectModuleState } from '../../reducers/project.reducer';
+import * as projectActions from '../../actions/project.action';
 
 export interface SearchResult {
 	id: number;
@@ -27,8 +26,7 @@ export class ProjectStartComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private projectRepositoryService: ProjectRepositoryService,
-		private store: Store<ApplicationState>
+		private store: Store<ProjectModuleState>
 	) {
 		this.recentProjects$ = this.store.select( getProjectsSelector )
 			.filter( Boolean );
@@ -37,11 +35,7 @@ export class ProjectStartComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.projectRepositoryService.getAll().first().subscribe(
-			( projects: Project[] ) => {
-				this.store.dispatch( new ProjectsLoadedAction( projects ) );
-			}
-		);
+		this.store.dispatch( new projectActions.Load() );
 	}
 
 	onSearch = (text: Observable<string>) => {
