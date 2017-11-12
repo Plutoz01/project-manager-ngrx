@@ -35,7 +35,7 @@ export class ProjectStartComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.store.dispatch( new projectActions.Load() );
+		this.store.dispatch( new projectActions.LoadAll() );
 	}
 
 	onSearch = (text: Observable<string>) => {

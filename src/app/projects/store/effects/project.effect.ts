@@ -12,10 +12,17 @@ export class ProjectEffects {
 
 	@Effect()
 	loadAll$: Observable<Action> = this.actions$
-		.ofType<projectActions.Load>( projectActions.LOAD )
+		.ofType<projectActions.LoadAll>( projectActions.LOAD_ALL )
 		.switchMap( () =>
 			this.projectRepositoryService.getAll().first()
-		).map( ( projects: Project[] ) => new projectActions.Loaded( projects ) );
+		).map( ( projects: Project[] ) => new projectActions.AllLoaded( projects ) );
+
+	@Effect()
+	load$: Observable<Action> = this.actions$
+		.ofType<projectActions.Select>( projectActions.SELECT )
+		.switchMap( ( action: projectActions.Select ) =>
+			this.projectRepositoryService.getById( action.projectId )
+		).map( ( project: Project ) => new projectActions.Loaded( project ) );
 
 	constructor(
 		private actions$: Actions,

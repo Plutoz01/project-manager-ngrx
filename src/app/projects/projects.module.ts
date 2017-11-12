@@ -10,7 +10,6 @@ import { Components } from './components';
 import { InitialProjects } from './data/initial/projects.data';
 import { InitialUserStories } from './data/initial/user-stories.data';
 import { ProjectsRouting } from './projects.routing';
-import { Resolvers } from './resolvers';
 import { Services } from './services';
 import { reducers } from './store/reducers';
 import { Effects } from './store/effects';
@@ -33,7 +32,6 @@ import { Effects } from './store/effects';
 		{ provide: 'INITIAL_USER_STORIES', useValue: InitialUserStories },
 
 		...Services,
-		...Resolvers
 	],
 	exports: [
 		...Components

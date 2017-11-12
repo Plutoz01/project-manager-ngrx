@@ -2,9 +2,9 @@ import { ApplicationState } from '../../../store/application-state';
 import { Project } from '../../models/project.class';
 
 export interface ProjectState {
-	projectId: number | null;
 	allProjects: Map<number, Project> | null;
 	favoriteProjects: Project[] | null;
+	selectedProject: Project | null;
 }
 
 export interface ProjectModuleState extends ApplicationState {
@@ -12,9 +12,9 @@ export interface ProjectModuleState extends ApplicationState {
 }
 
 export const initialState: ProjectState = {
-	projectId: null,
 	allProjects: null,
-	favoriteProjects: null
+	favoriteProjects: null,
+	selectedProject: null
 };
 
 
