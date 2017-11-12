@@ -10,7 +10,7 @@ import { AppRouting } from './app.routing';
 import { ProjectsModule } from './projects/projects.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { reducers } from './store/reducers/reducers';
+import { reducers } from './store/reducers';
 
 @NgModule( {
 	declarations: [

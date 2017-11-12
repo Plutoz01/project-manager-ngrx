@@ -12,8 +12,8 @@ import { InitialUserStories } from './data/initial/user-stories.data';
 import { ProjectsRouting } from './projects.routing';
 import { Resolvers } from './resolvers';
 import { Services } from './services';
-import { reducers } from './reducers/index';
-import { ProjectEffects } from './effects/project.effect';
+import { reducers } from './store/reducers';
+import { Effects } from './store/effects';
 
 @NgModule( {
 	imports: [
@@ -22,7 +22,7 @@ import { ProjectEffects } from './effects/project.effect';
 		NgbModule,
 		ProjectsRouting,
 		StoreModule.forFeature( 'projects', reducers ),
-		EffectsModule.forFeature( [ ProjectEffects ] ),
+		EffectsModule.forFeature( Effects ),
 		SharedModule
 	],
 	declarations: [

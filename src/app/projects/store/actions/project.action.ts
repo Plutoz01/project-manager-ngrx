@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Project } from '../models/project.class';
+import { Project } from '../../models/project.class';
 
 export const LOAD = 'LOAD';
 export const LOADED = 'LOADED';

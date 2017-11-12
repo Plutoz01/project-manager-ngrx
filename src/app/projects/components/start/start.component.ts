@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { Project } from '../../models/project.class';
-import { getFavoriteProjectsSelector, getProjectsSelector } from '../../reducers/index';
-import { ProjectModuleState } from '../../reducers/project.reducer';
-import * as projectActions from '../../actions/project.action';
+import { ProjectModuleState } from '../../store/state/project.state';
+import { getFavoriteProjectsSelector, getProjectsSelector } from '../../store/selector/project.selector';
+import * as projectActions from '../../store/actions/project.action';
 
 export interface SearchResult {
 	id: number;
